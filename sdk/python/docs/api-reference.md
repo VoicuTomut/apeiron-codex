@@ -1,4 +1,4 @@
-# OpenAI Codex Python SDK - API Reference
+# Apeiron Agents Python SDK - API Reference
 
 Public surface of `openai_codex` for Codex workflows.
 

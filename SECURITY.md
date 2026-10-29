@@ -1,17 +1,13 @@
 # Security Policy
 
-Thank you for helping us keep Codex secure!
-
 ## Reporting Security Issues
 
-The security is essential to OpenAI's mission. We appreciate the work of security researchers acting in good faith to identify and responsibly report potential vulnerabilities, helping us maintain strong privacy and security standards for our users and technology.
+Apeiron Agents is a fork of OpenAI Codex CLI, maintained by Apeiron Intelligence. **Do not report vulnerabilities in this fork to OpenAI.** OpenAI's Bugcrowd program covers OpenAI's own software and will not accept reports about code we maintain.
 
-Our security program is managed through Bugcrowd, and we ask that any validated vulnerabilities be reported via the [Bugcrowd program](https://bugcrowd.com/engagements/openai).
+Report vulnerabilities in Apeiron Agents privately, via [GitHub private vulnerability reporting](https://github.com/VoicuTomut/apeiron-codex/security/advisories/new) on this repository. Please do not open a public issue for a security problem.
 
-## Vulnerability Disclosure Program
+If you can reproduce the vulnerability against an **unmodified upstream** Codex CLI, it is an upstream issue: report it through OpenAI's [Bugcrowd program](https://bugcrowd.com/engagements/openai) so it reaches the people who can fix it at the source. Telling us as well is welcome, so we can track whether this fork is affected.
 
-Our Vulnerability Program Guidelines are defined on our [Bugcrowd program page](https://bugcrowd.com/engagements/openai).
+## How to operate Apeiron Agents safely
 
-## How to operate CODEX safely
-
-For details on Codex security boundaries, including sandboxing, approvals, and network controls, see [Agent approvals & security](https://developers.openai.com/codex/agent-approvals-security).
+Apeiron Agents inherits its security boundaries — sandboxing, approvals, and network controls — from upstream Codex CLI. For details on how that model works, see the [upstream documentation](https://developers.openai.com/codex/agent-approvals-security). Note that upstream documentation describes upstream's behaviour; where this fork diverges, this repository is the authority.

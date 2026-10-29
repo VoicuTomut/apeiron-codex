@@ -15,16 +15,17 @@ use crate::terminal_palette::stdout_color_level;
 use ratatui::style::Color;
 use ratatui::style::Style;
 
-const LIGHT_BG_ACCENT_RGB: (u8, u8, u8) = (28, 100, 200);
+/// Apeiron green for text accents on light backgrounds (#00855C).
+const LIGHT_BG_ACCENT_RGB: (u8, u8, u8) = (0, 133, 92);
 
-/// ChatGPT Blue 100 (#A4CDFB), used for selection fills on light backgrounds.
-pub(crate) const CHATGPT_BLUE_100: (u8, u8, u8) = (164, 205, 251);
+/// Apeiron Green 100 (#94DAC3), used for selection fills on light backgrounds.
+pub(crate) const APEIRON_GREEN_100: (u8, u8, u8) = (148, 218, 195);
 
-/// ChatGPT Blue 200 (#63A8F8).
-pub(crate) const CHATGPT_BLUE_200: (u8, u8, u8) = (99, 168, 248);
+/// Apeiron Green 200 (#18C09A).
+pub(crate) const APEIRON_GREEN_200: (u8, u8, u8) = (24, 192, 154);
 
 /// Shared accent for picker selection backgrounds and transcript foreground emphasis.
-pub(crate) const UI_ACCENT: (u8, u8, u8) = CHATGPT_BLUE_200;
+pub(crate) const UI_ACCENT: (u8, u8, u8) = APEIRON_GREEN_200;
 
 #[derive(Clone, Copy)]
 pub(crate) enum StatusTone {

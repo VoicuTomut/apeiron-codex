@@ -123,7 +123,7 @@ pub enum CodexErrorDetails {
     RateLimitExceeded(String),
     // The iOS input-limit classifier matches this message's ASCII prefix.
     #[error(
-        "Codex ran out of room in the model's context window. Start a new thread or clear earlier history before retrying."
+        "Apeiron Agents ran out of room in the model's context window. Start a new thread or clear earlier history before retrying."
     )]
     ContextWindowExceeded,
     #[error("no thread with id: {0}")]
@@ -189,7 +189,7 @@ pub enum CodexErrorDetails {
     #[error("Quota exceeded. Check your plan and billing details.")]
     QuotaExceeded,
     #[error(
-        "To use Codex with your ChatGPT plan, upgrade to Plus: https://chatgpt.com/explore/plus."
+        "To use Apeiron Agents with your ChatGPT plan, upgrade to Plus: https://chatgpt.com/explore/plus."
     )]
     UsageNotIncluded,
     #[error("We’re currently experiencing high demand, which may cause temporary errors.")]
@@ -813,7 +813,7 @@ impl std::fmt::Display for UsageLimitReachedError {
             }
             Some(PlanType::Known(KnownPlan::Free)) | Some(PlanType::Known(KnownPlan::Go)) => {
                 format!(
-                    "You’ve hit your usage limit. Upgrade to Plus to continue using Codex (https://chatgpt.com/explore/plus),{}",
+                    "You’ve hit your usage limit. Upgrade to Plus to continue using Apeiron Agents (https://chatgpt.com/explore/plus),{}",
                     retry_suffix_after_or(self.resets_at.as_ref())
                 )
             }

@@ -17,7 +17,7 @@ pub struct Cli {
     #[command(subcommand)]
     pub command: Option<Command>,
 
-    /// Error out when config.toml contains fields that are not recognized by this version of Codex.
+    /// Error out when config.toml contains fields that are not recognized by this version of Apeiron Agents.
     #[arg(long = "strict-config", global = true, default_value_t = false)]
     pub strict_config: bool,
 

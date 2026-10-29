@@ -5454,7 +5454,7 @@
         },
         "terminal_resize_reflow_max_rows": {
           "default": null,
-          "description": "Trim terminal resize-reflow replay to the most recent rendered terminal rows when the transcript exceeds this cap. Omit to use Codex's terminal-specific default. Set to `0` to keep all rendered rows.",
+          "description": "Trim terminal resize-reflow replay to the most recent rendered terminal rows when the transcript exceeds this cap. Omit to use the Apeiron Agents terminal-specific default. Set to `0` to keep all rendered rows.",
           "format": "uint",
           "minimum": 0.0,
           "type": "integer"

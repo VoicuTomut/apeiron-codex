@@ -1033,7 +1033,7 @@ pub struct Tui {
     pub model_availability_nux: ModelAvailabilityNuxConfig,
 
     /// Trim terminal resize-reflow replay to the most recent rendered terminal rows when the
-    /// transcript exceeds this cap. Omit to use Codex's terminal-specific default. Set to `0` to
+    /// transcript exceeds this cap. Omit to use the Apeiron Agents terminal-specific default. Set to `0` to
     /// keep all rendered rows.
     #[serde(default)]
     #[schemars(range(min = 0))]

@@ -2,7 +2,7 @@
 source: tui/src/onboarding/gcp_tests.rs
 expression: terminal.backend().to_string()
 ---
-  Choose how you want to use Codex.
+  Choose how you want to use Apeiron Agents.
 
 > 1. Sign in with ChatGPT
      Usage included with Plus, Pro, Business, and Enterprise plans

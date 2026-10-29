@@ -25,7 +25,7 @@ pub struct ExecServerCommand {
     #[command(subcommand)]
     command: Option<ExecServerSubcommand>,
 
-    /// Error out when config.toml contains fields that are not recognized by this version of Codex.
+    /// Error out when config.toml contains fields that are not recognized by this version of Apeiron Agents.
     #[arg(
         id = "exec_server_strict_config",
         long = "strict-config",

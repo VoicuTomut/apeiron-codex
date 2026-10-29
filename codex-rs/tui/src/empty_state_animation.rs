@@ -53,6 +53,51 @@ pub(crate) struct EmptyStateAnimation {
     replaying: bool,
 }
 
+/// The Apeiron Agents mark, as braille dot rows generated from the brand icon.
+const APEIRON_MARK: &str = include_str!("../assets/apeiron_mark.txt");
+
+/// Lay the mark out centered in `area`, returning one dot byte per cell in
+/// row-major order. Cells the mark does not cover stay zero and are skipped by
+/// the caller, so the stage keeps whatever the caller painted behind it.
+fn apeiron_mark_dots(area: Rect) -> Vec<u8> {
+    let rows: Vec<&str> = APEIRON_MARK.lines().collect();
+    let mark_h = rows.len() as u16;
+    let mark_w = rows
+        .iter()
+        .map(|row| row.chars().count() as u16)
+        .max()
+        .unwrap_or(0);
+
+    let mut dots = vec![0u8; usize::from(area.width) * usize::from(area.height)];
+    if mark_w == 0 || mark_h == 0 || area.width == 0 || area.height == 0 {
+        return dots;
+    }
+
+    // Center, clipping rather than scaling when the stage is smaller than the mark.
+    let x0 = area.width.saturating_sub(mark_w) / 2;
+    let y0 = area.height.saturating_sub(mark_h) / 2;
+
+    for (ry, row) in rows.iter().enumerate() {
+        let y = y0 + ry as u16;
+        if y >= area.height {
+            break;
+        }
+        for (rx, ch) in row.chars().enumerate() {
+            let x = x0 + rx as u16;
+            if x >= area.width {
+                break;
+            }
+            // Braille lives at U+2800 + dot bits; U+2800 itself is blank.
+            let bits = (ch as u32).checked_sub(0x2800).unwrap_or(0);
+            if bits == 0 || bits > 0xFF {
+                continue;
+            }
+            dots[usize::from(y) * usize::from(area.width) + usize::from(x)] = bits as u8;
+        }
+    }
+    dots
+}
+
 impl EmptyStateAnimation {
     pub(crate) fn is_eligible(&self) -> bool {
         self.eligible
@@ -244,19 +289,41 @@ impl EmptyStateAnimation {
             terminal_palette::default_fg().unwrap_or((210, 221, 235)),
             background,
         );
-        let cells = self.renderer.get_or_insert_with(Renderer::default).frame(
+        // Apeiron Agents paints its own mark in place of upstream's procedural
+        // blossom. The renderer still runs so the lighting model keeps supplying
+        // per-cell shading, but the dot pattern comes from the brand mark and the
+        // hue is the Apeiron accent. The fade and scheduling above are untouched,
+        // so the mark still fades in and callers' sizing still applies.
+        let shading = self.renderer.get_or_insert_with(Renderer::default).frame(
             area.width,
             area.height,
             phase,
             &light,
         );
-        for (i, cell) in cells.iter().enumerate().filter(|(_, cell)| cell.dots != 0) {
-            let [_, r, g, b] = cell.rgb.to_be_bytes();
+        let mark = apeiron_mark_dots(area);
+        let (ar, ag, ab) = crate::style::APEIRON_GREEN_200;
+        for (i, dots) in mark.iter().copied().enumerate().filter(|(_, dots)| *dots != 0) {
+            // Shade the brand hue with the renderer's local luminance so the mark
+            // keeps the depth the animation gives it rather than going flat.
+            let shade = shading
+                .get(i)
+                .map(|cell| {
+                    let [_, r, g, b] = cell.rgb.to_be_bytes();
+                    (u16::from(r) + u16::from(g) + u16::from(b)) / 3
+                })
+                .unwrap_or(255)
+                .max(96);
+            let scale = f32::from(shade) / 255.0;
+            let (r, g, b) = (
+                (f32::from(ar) * scale) as u8,
+                (f32::from(ag) * scale) as u8,
+                (f32::from(ab) * scale) as u8,
+            );
             let target = &mut buffer[(
                 area.x + i as u16 % area.width,
                 area.y + i as u16 / area.width,
             )];
-            target.set_char(char::from_u32(0x2800 + u32::from(cell.dots)).unwrap_or(' '));
+            target.set_char(char::from_u32(0x2800 + u32::from(dots)).unwrap_or(' '));
             let color = crate::color::blend((r, g, b), background, opacity);
             let color = if color_level == terminal_palette::StdoutColorLevel::Ansi256 {
                 // Four bits per channel bound the cache and avoid palette searches each frame.
