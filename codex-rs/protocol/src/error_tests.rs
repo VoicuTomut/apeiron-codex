@@ -330,7 +330,7 @@ fn usage_limit_reached_error_formats_free_plan() {
     };
     assert_eq!(
         err.to_string(),
-        "You’ve hit your usage limit. Upgrade to Plus to continue using Codex (https://chatgpt.com/explore/plus), or try again later."
+        "You’ve hit your usage limit. Upgrade to Plus to continue using Apeiron Agents (https://chatgpt.com/explore/plus), or try again later."
     );
 }
 
@@ -346,7 +346,7 @@ fn usage_limit_reached_error_formats_go_plan() {
     };
     assert_eq!(
         err.to_string(),
-        "You’ve hit your usage limit. Upgrade to Plus to continue using Codex (https://chatgpt.com/explore/plus), or try again later."
+        "You’ve hit your usage limit. Upgrade to Plus to continue using Apeiron Agents (https://chatgpt.com/explore/plus), or try again later."
     );
 }
 

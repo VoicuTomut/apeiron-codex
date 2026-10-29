@@ -1,4 +1,4 @@
-# OpenAI Codex Python SDK
+# Apeiron Agents Python SDK
 
 Build Python applications that start Codex threads, run turns, stream progress,
 and control workspace access.

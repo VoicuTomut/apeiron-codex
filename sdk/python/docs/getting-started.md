@@ -1,6 +1,6 @@
 # Getting Started
 
-This guide gets a published OpenAI Codex Python SDK installation running
+This guide gets a published Apeiron Agents Python SDK installation running
 with a multi-turn thread.
 
 ## 1. Install

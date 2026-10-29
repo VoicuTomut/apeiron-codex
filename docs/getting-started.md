@@ -1,3 +1,3 @@
-# Getting started with Codex CLI
+# Getting started with Apeiron Agents
 
-For an overview of Codex CLI features, see [this documentation](https://developers.openai.com/codex/cli/features#running-in-interactive-mode).
+Apeiron Agents inherits its feature set from upstream Codex CLI. See the [upstream documentation](https://developers.openai.com/codex/cli/features#running-in-interactive-mode).

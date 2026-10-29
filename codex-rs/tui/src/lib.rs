@@ -2459,6 +2459,14 @@ fn should_show_login_screen(login_status: LoginStatus, requires_openai_auth: boo
         return false;
     }
 
+    // An API key supplied through the environment is enough to start, so go
+    // straight to the composer instead of gating on the sign-in picker. The
+    // auth manager reads the same variable, so this never hides a real
+    // failure: a bad key still surfaces as an error on the first request.
+    if codex_login::read_openai_api_key_from_env().is_some() {
+        return false;
+    }
+
     login_status == LoginStatus::NotAuthenticated
 }
 

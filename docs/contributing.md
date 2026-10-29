@@ -1,16 +1,8 @@
 ## Contributing
 
-We welcome community contributions through the [openai/codex issue tracker](https://github.com/openai/codex/issues). Bug reports, root-cause analyses, and feature requests help us understand what matters most and improve Codex.
+Report bugs and request features for Apeiron Agents on this fork's own issue tracker: [VoicuTomut/apeiron-codex/issues](https://github.com/VoicuTomut/apeiron-codex/issues).
 
-**We do not accept external code contributions or pull requests.**
-
-### Why we do not accept external code contributions
-
-Effective changes to Codex require architectural context, an understanding of system-level constraints, and visibility into the project's roadmap. External pull requests often focus on issues that are lower priority, affect a small number of users, or need substantial changes to fit the broader system. Reviewing and iterating on those changes can take more time than implementing a fix directly, diverting attention from higher-priority work.
-
-Community expertise is most valuable when shared through detailed bug reports, reproduction steps, logs, root-cause analysis, and design discussions in issues. Understanding the problem, identifying the right solution, and prioritizing the work are typically the hard parts; implementation is comparatively straightforward with the help of Codex itself.
-
-For these reasons, we focus community contributions on issue reports, analysis, and feedback, while the Codex team handles code changes.
+Please do **not** report issues with this fork to the [upstream openai/codex tracker](https://github.com/openai/codex/issues). OpenAI does not maintain or support Apeiron Agents. If you can reproduce a problem against an unmodified upstream Codex CLI, then it belongs upstream — and note that upstream does not accept external code contributions.
 
 ### Reporting bugs
 
@@ -20,9 +12,11 @@ When reporting a bug, include as much relevant detail as possible:
 
 - Clear, detailed steps to reproduce the problem.
 - Expected and actual behavior.
-- Your Codex version, operating system, and other relevant environment details.
+- Your Apeiron Agents version, operating system, and other relevant environment details.
 - Logs, error messages, or other diagnostic information, with sensitive information removed.
 - Root-cause analysis, technical observations, or potential approaches to a fix, if available.
+
+Say whether you can also reproduce the problem on upstream Codex CLI. That single detail decides whether the cause is ours or inherited, and it saves a lot of bisecting.
 
 ### Requesting features
 

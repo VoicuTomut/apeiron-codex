@@ -1,3 +1,3 @@
 # Slash commands
 
-For an overview of Codex CLI slash commands, see [this documentation](https://developers.openai.com/codex/cli/slash-commands).
+Apeiron Agents inherits its slash commands from upstream Codex CLI. See the [upstream documentation](https://developers.openai.com/codex/cli/slash-commands).

@@ -1,3 +1,3 @@
 ## Sandbox & approvals
 
-For information about Codex sandboxing and approvals, see [this documentation](https://developers.openai.com/codex/security).
+Apeiron Agents inherits its sandboxing and approvals model from upstream Codex CLI. See the [upstream documentation](https://developers.openai.com/codex/security).

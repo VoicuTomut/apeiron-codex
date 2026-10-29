@@ -1,3 +1,3 @@
 # Authentication
 
-For information about Codex CLI authentication, see [this documentation](https://developers.openai.com/codex/auth).
+Apeiron Agents inherits its authentication flow from upstream Codex CLI. See the [upstream documentation](https://developers.openai.com/codex/auth).
